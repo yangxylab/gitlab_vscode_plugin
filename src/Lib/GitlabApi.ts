@@ -8,9 +8,9 @@ export type 仓库返回类型 = {
   path: string
 }
 export async function 获得用户仓库信息(令牌: string, 仓库排序选项: string,网址:string): Promise<仓库返回类型[]> {
-  console.log(`${网址}/api/v4/projects?private_token=${令牌}&sort=${仓库排序选项}`)
+  console.log(`${网址}/api/v4/projects?private_token=${令牌}&sort=${仓库排序选项}&per_page=99999`)
   var c = await axios.get(
-    `${网址}/api/v4/projects?private_token=${令牌}&sort=${仓库排序选项}`
+    `${网址}/api/v4/projects?private_token=${令牌}&sort=${仓库排序选项}&per_page=99999`
   )
   return c.data
 }
