@@ -74,9 +74,10 @@ export async function activate(context: vscode.ExtensionContext) {
         [
           ...显示数组,
           ...用户仓库信息
-            .filter((a) => a.name.toLowerCase().indexOf(过滤条件.toLowerCase()) != -1)
-            .map((a) => ({
-              显示文本: (a.visibility=="private" ? '[私]' : '[公]' ) + a.name,
+              .filter((a) => a.name_with_namespace.toLowerCase().indexOf(过滤条件.toLowerCase()) != -1)
+              .sort((a,b) => a.name_with_namespace.localeCompare(b.name_with_namespace))
+              .map((a) => ({
+              显示文本: (a.visibility == "private" ? '[私]' : '[公]') + a.name_with_namespace,
               gitlab_id: a.id,
               http_url_to_repo: a.http_url_to_repo,
               path: a.path,
